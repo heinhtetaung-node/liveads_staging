@@ -1,0 +1,197 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2016-10-17 00:28:57 --> 79b7d154e92a6451fe24dd5f872c82db1283f788170350a65ca52e6a7e366e91-20-1
+ERROR - 2016-10-17 01:03:12 --> ce9034fb572cdb034e303afbc1368303f53bad67eb88ee4a74b4e106b062098b-38-1
+ERROR - 2016-10-17 01:15:15 --> ce9034fb572cdb034e303afbc1368303f53bad67eb88ee4a74b4e106b062098b-38-1
+ERROR - 2016-10-17 01:23:51 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 01:25:32 --> SELECT
+				product.pro_id,
+				product.pro_description,
+				product.pro_title,
+				product.pro_price,
+				product.pro_discount_type,
+				product.pro_discount_amount,
+				product.pro_quantity,
+				product.pro_created,
+				product.pro_like_count,
+				product.pro_image_name,
+				product_sub.pro_id AS sort_pro_id,
+				customer.cu_name
+				FROM
+				product
+				LEFT JOIN (
+									SELECT product_sub.pro_id from product as product_sub where product_sub.paid_ads_start_date <= DATE_FORMAT(now(),'%Y-%m-%d') AND product_sub.paid_ads_end_date >= DATE_FORMAT(now(),'%Y-%m-%d')
+								) AS product_sub ON product_sub.pro_id= product.pro_id
+				LEFT JOIN customer ON product.customer_id = customer.cu_id
+				WHERE
+								 product.pro_expired_date >= DATE(NOW()) AND product.pro_is_promotion = 1 AND product.customer_id = 18  ORDER BY  sort_pro_id DESC, product.pro_created DESC 
+ERROR - 2016-10-17 01:25:43 --> SELECT `user_id` FROM `token` WHERE `token` = '977a390d4a0afab15c7cb3be8c93b3ae4761b2358e1958dcff4a2749c1484e05'
+ERROR - 2016-10-17 01:27:12 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 02:30:00 --> 404 Page Not Found: Faviconico/index
+ERROR - 2016-10-17 02:40:15 --> f288c7eaac9d4a5954fb83c9a2321af8fe2aa7d08e8efc048bd4517ebe5d609c-57-1
+ERROR - 2016-10-17 09:50:35 --> 7929c674aea992f08cddc3694538ced59dbe967ee4c5b9fc9a5650afef612ec9
+ERROR - 2016-10-17 09:50:35 --> 79b7d154e92a6451fe24dd5f872c82db1283f788170350a65ca52e6a7e366e91
+ERROR - 2016-10-17 09:50:35 --> 541372fbf58ac4223ae49cd61da1adad5cab59e811d4a1e5a48cf5a3f60a30fe
+ERROR - 2016-10-17 09:54:09 --> 7929c674aea992f08cddc3694538ced59dbe967ee4c5b9fc9a5650afef612ec9-32-1
+ERROR - 2016-10-17 09:54:30 --> 7929c674aea992f08cddc3694538ced59dbe967ee4c5b9fc9a5650afef612ec9-32-1
+ERROR - 2016-10-17 10:07:47 --> APA91bGq1B7Za_xtguc6OjoBnpmcKcupkVhAaLRMYB0POpuCJZFFgRh9_UNrg8OvYHj4b0PMabVfIMvZw-3-KK5xzXjrxdH-3h605nMoCJHf5gAL-y8pLgw-34-2
+ERROR - 2016-10-17 10:09:58 --> 11167f8f62a210c49ffd2ef39d37ef181512698c46cbd565f75bd14e68e1d3b9-56-1
+ERROR - 2016-10-17 10:11:31 --> APA91bGq1B7Za_xtguc6OjoBnpmcKcupkVhAaLRMYB0POpuCJZFFgRh9_UNrg8OvYHj4b0PMabVfIMvZw-3-KK5xzXjrxdH-3h605nMoCJHf5gAL-y8pLgw-34-2
+ERROR - 2016-10-17 10:13:36 --> 79b7d154e92a6451fe24dd5f872c82db1283f788170350a65ca52e6a7e366e91-20-1
+ERROR - 2016-10-17 10:16:04 --> ce9034fb572cdb034e303afbc1368303f53bad67eb88ee4a74b4e106b062098b-38-1
+ERROR - 2016-10-17 10:16:11 --> APA91bGq1B7Za_xtguc6OjoBnpmcKcupkVhAaLRMYB0POpuCJZFFgRh9_UNrg8OvYHj4b0PMabVfIMvZw-3-KK5xzXjrxdH-3h605nMoCJHf5gAL-y8pLgw-34-2
+ERROR - 2016-10-17 10:19:15 --> ce9034fb572cdb034e303afbc1368303f53bad67eb88ee4a74b4e106b062098b-38-1
+ERROR - 2016-10-17 10:19:23 --> APA91bGq1B7Za_xtguc6OjoBnpmcKcupkVhAaLRMYB0POpuCJZFFgRh9_UNrg8OvYHj4b0PMabVfIMvZw-3-KK5xzXjrxdH-3h605nMoCJHf5gAL-y8pLgw-34-2
+ERROR - 2016-10-17 10:24:34 --> APA91bGq1B7Za_xtguc6OjoBnpmcKcupkVhAaLRMYB0POpuCJZFFgRh9_UNrg8OvYHj4b0PMabVfIMvZw-3-KK5xzXjrxdH-3h605nMoCJHf5gAL-y8pLgw-34-2
+ERROR - 2016-10-17 10:34:53 --> APA91bGq1B7Za_xtguc6OjoBnpmcKcupkVhAaLRMYB0POpuCJZFFgRh9_UNrg8OvYHj4b0PMabVfIMvZw-3-KK5xzXjrxdH-3h605nMoCJHf5gAL-y8pLgw-34-2
+ERROR - 2016-10-17 10:40:43 --> APA91bGq1B7Za_xtguc6OjoBnpmcKcupkVhAaLRMYB0POpuCJZFFgRh9_UNrg8OvYHj4b0PMabVfIMvZw-3-KK5xzXjrxdH-3h605nMoCJHf5gAL-y8pLgw-34-2
+ERROR - 2016-10-17 10:48:45 --> APA91bGq1B7Za_xtguc6OjoBnpmcKcupkVhAaLRMYB0POpuCJZFFgRh9_UNrg8OvYHj4b0PMabVfIMvZw-3-KK5xzXjrxdH-3h605nMoCJHf5gAL-y8pLgw-34-2
+ERROR - 2016-10-17 11:29:03 --> APA91bH52nnGR4KQa8n3V7cb03aQINdFuAcLfUIbFkP8qBP-0kuv7mXhK6pltVHd9DVZ0ytNAAva0dBad8cP8dK-H1BWS4QocPqT9jnUVgrlo7Iol1G250s--2
+ERROR - 2016-10-17 12:45:05 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 12:50:00 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 13:08:50 --> SELECT `user_id` FROM `token` WHERE `token` = '977a390d4a0afab15c7cb3be8c93b3ae4761b2358e1958dcff4a2749c1484e05'
+ERROR - 2016-10-17 13:08:55 --> SELECT `user_id` FROM `token` WHERE `token` = '977a390d4a0afab15c7cb3be8c93b3ae4761b2358e1958dcff4a2749c1484e05'
+ERROR - 2016-10-17 13:09:02 --> SELECT `user_id` FROM `token` WHERE `token` = '977a390d4a0afab15c7cb3be8c93b3ae4761b2358e1958dcff4a2749c1484e05'
+ERROR - 2016-10-17 13:09:20 --> SELECT `user_id` FROM `token` WHERE `token` = '977a390d4a0afab15c7cb3be8c93b3ae4761b2358e1958dcff4a2749c1484e05'
+ERROR - 2016-10-17 13:15:42 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 13:18:24 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 13:21:15 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 13:48:21 --> ce9034fb572cdb034e303afbc1368303f53bad67eb88ee4a74b4e106b062098b-38-1
+ERROR - 2016-10-17 14:04:59 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 14:31:28 --> loginss:ml.yen96@gmail.com,0127040478
+ERROR - 2016-10-17 14:31:28 --> login failed
+ERROR - 2016-10-17 14:33:35 --> 11167f8f62a210c49ffd2ef39d37ef181512698c46cbd565f75bd14e68e1d3b9-56-1
+ERROR - 2016-10-17 14:37:09 --> SELECT
+				product.pro_id,
+				product.pro_description,
+				product.pro_title,
+				product.pro_price,
+				product.pro_discount_type,
+				product.pro_discount_amount,
+				product.pro_quantity,
+				product.pro_created,
+				product.pro_like_count,
+				product.pro_image_name,
+				product_sub.pro_id AS sort_pro_id,
+				customer.cu_name
+				FROM
+				product
+				LEFT JOIN (
+									SELECT product_sub.pro_id from product as product_sub where product_sub.paid_ads_start_date <= DATE_FORMAT(now(),'%Y-%m-%d') AND product_sub.paid_ads_end_date >= DATE_FORMAT(now(),'%Y-%m-%d')
+								) AS product_sub ON product_sub.pro_id= product.pro_id
+				LEFT JOIN customer ON product.customer_id = customer.cu_id
+				WHERE
+								 product.pro_expired_date >= DATE(NOW()) AND product.pro_is_promotion = 1 AND product.customer_id = 9  ORDER BY  sort_pro_id DESC, product.pro_created DESC 
+ERROR - 2016-10-17 14:45:35 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 14:46:53 --> APA91bGq1B7Za_xtguc6OjoBnpmcKcupkVhAaLRMYB0POpuCJZFFgRh9_UNrg8OvYHj4b0PMabVfIMvZw-3-KK5xzXjrxdH-3h605nMoCJHf5gAL-y8pLgw-34-2
+ERROR - 2016-10-17 14:46:57 --> 51 26XLN6
+ERROR - 2016-10-17 14:47:04 --> APA91bHMi0Ddsv1bf4qhksP9IoVX6QmSrjccM0tYbrZcPcZOmUP893YcYEu6PH8d6E9yfbRv2SxMjD2yAollY-o7OGVBFI_-qd8VnrAGimHH9dmH4PkTo9E-51-2
+ERROR - 2016-10-17 14:48:31 --> Severity: Notice --> Undefined offset: 1 /home/liveads88/public_html/app_liveads88/application/controllers/Pushnotification.php 51
+ERROR - 2016-10-17 14:48:31 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'asc  LIMIT 0 ,10' at line 5 - Invalid query: SELECT
+				*
+				 FROM
+				`push_notifications` WHERE 1=1
+				 ORDER BY    asc  LIMIT 0 ,10   
+ERROR - 2016-10-17 14:48:31 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at /home/liveads88/public_html/app_liveads88/system/core/Exceptions.php:272) /home/liveads88/public_html/app_liveads88/system/core/Common.php 568
+ERROR - 2016-10-17 14:56:13 --> loginss:demo@liveads88.com,123456
+ERROR - 2016-10-17 14:56:13 --> login
+ERROR - 2016-10-17 14:56:13 --> 6cad17a017aa40c7427d102a90a8acc3f9f76d0f0b67ac79ed7e36c2bf750f2d-32-1
+ERROR - 2016-10-17 15:10:01 --> ce9034fb572cdb034e303afbc1368303f53bad67eb88ee4a74b4e106b062098b-38-1
+ERROR - 2016-10-17 15:37:36 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 16:07:09 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 16:12:09 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 16:13:42 --> loginss:nickongpp@gmail.com,4b8a18742d
+ERROR - 2016-10-17 16:13:42 --> login
+ERROR - 2016-10-17 16:13:44 --> APA91bGbTmiy6ZBsM72YXzLqmw4l9qio24G9t-6To4xk8uP3Mhi7CTxxrb3aXcc0TAtq6c0P1PLSmnIhb6HcqNkUMqLzrdZ9Pk9yeF891fsCizRMRRd_fAk-34-2
+ERROR - 2016-10-17 16:33:18 --> APA91bGbTmiy6ZBsM72YXzLqmw4l9qio24G9t-6To4xk8uP3Mhi7CTxxrb3aXcc0TAtq6c0P1PLSmnIhb6HcqNkUMqLzrdZ9Pk9yeF891fsCizRMRRd_fAk-34-2
+ERROR - 2016-10-17 16:34:30 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 16:35:56 --> APA91bGbTmiy6ZBsM72YXzLqmw4l9qio24G9t-6To4xk8uP3Mhi7CTxxrb3aXcc0TAtq6c0P1PLSmnIhb6HcqNkUMqLzrdZ9Pk9yeF891fsCizRMRRd_fAk-34-2
+ERROR - 2016-10-17 16:36:14 --> APA91bGbTmiy6ZBsM72YXzLqmw4l9qio24G9t-6To4xk8uP3Mhi7CTxxrb3aXcc0TAtq6c0P1PLSmnIhb6HcqNkUMqLzrdZ9Pk9yeF891fsCizRMRRd_fAk-34-2
+ERROR - 2016-10-17 16:44:29 --> APA91bHMi0Ddsv1bf4qhksP9IoVX6QmSrjccM0tYbrZcPcZOmUP893YcYEu6PH8d6E9yfbRv2SxMjD2yAollY-o7OGVBFI_-qd8VnrAGimHH9dmH4PkTo9E-51-2
+ERROR - 2016-10-17 16:46:35 --> loginss:huichern@iCloud.com,0127171637
+ERROR - 2016-10-17 16:46:35 --> login failed
+ERROR - 2016-10-17 16:46:50 --> loginss:huichern@iCloud.com,Lhc0127171637
+ERROR - 2016-10-17 16:46:50 --> login failed
+ERROR - 2016-10-17 16:48:23 --> register, code:4696
+ERROR - 2016-10-17 16:48:23 --> register_succes:67
+ERROR - 2016-10-17 16:48:23 --> an error has occured: OK: 59291_162_161<br>
+ERROR - 2016-10-17 16:48:39 --> verification: user_id:67,code:4696
+ERROR - 2016-10-17 16:48:53 --> loginss:huichern@iCloud.com,7171637
+ERROR - 2016-10-17 16:48:53 --> login
+ERROR - 2016-10-17 16:48:53 --> d9fe05d7f1126e41e847b692231392ca452eae8ae5cae23216f45a2fe1758d0f-67-1
+ERROR - 2016-10-17 16:48:57 --> APA91bHMi0Ddsv1bf4qhksP9IoVX6QmSrjccM0tYbrZcPcZOmUP893YcYEu6PH8d6E9yfbRv2SxMjD2yAollY-o7OGVBFI_-qd8VnrAGimHH9dmH4PkTo9E-51-2
+ERROR - 2016-10-17 16:50:12 --> APA91bHMi0Ddsv1bf4qhksP9IoVX6QmSrjccM0tYbrZcPcZOmUP893YcYEu6PH8d6E9yfbRv2SxMjD2yAollY-o7OGVBFI_-qd8VnrAGimHH9dmH4PkTo9E-51-2
+ERROR - 2016-10-17 16:55:49 --> APA91bHMi0Ddsv1bf4qhksP9IoVX6QmSrjccM0tYbrZcPcZOmUP893YcYEu6PH8d6E9yfbRv2SxMjD2yAollY-o7OGVBFI_-qd8VnrAGimHH9dmH4PkTo9E-51-2
+ERROR - 2016-10-17 17:20:48 --> APA91bGbTmiy6ZBsM72YXzLqmw4l9qio24G9t-6To4xk8uP3Mhi7CTxxrb3aXcc0TAtq6c0P1PLSmnIhb6HcqNkUMqLzrdZ9Pk9yeF891fsCizRMRRd_fAk-34-2
+ERROR - 2016-10-17 17:43:02 --> APA91bGbTmiy6ZBsM72YXzLqmw4l9qio24G9t-6To4xk8uP3Mhi7CTxxrb3aXcc0TAtq6c0P1PLSmnIhb6HcqNkUMqLzrdZ9Pk9yeF891fsCizRMRRd_fAk-34-2
+ERROR - 2016-10-17 17:46:14 --> APA91bGbTmiy6ZBsM72YXzLqmw4l9qio24G9t-6To4xk8uP3Mhi7CTxxrb3aXcc0TAtq6c0P1PLSmnIhb6HcqNkUMqLzrdZ9Pk9yeF891fsCizRMRRd_fAk-34-2
+ERROR - 2016-10-17 17:51:23 --> APA91bGbTmiy6ZBsM72YXzLqmw4l9qio24G9t-6To4xk8uP3Mhi7CTxxrb3aXcc0TAtq6c0P1PLSmnIhb6HcqNkUMqLzrdZ9Pk9yeF891fsCizRMRRd_fAk-34-2
+ERROR - 2016-10-17 18:11:24 --> register, code:3630
+ERROR - 2016-10-17 18:11:24 --> register_succes:68
+ERROR - 2016-10-17 18:11:25 --> an error has occured: OK: 59291_163_162<br>
+ERROR - 2016-10-17 18:11:46 --> verification: user_id:68,code:3630
+ERROR - 2016-10-17 18:11:55 --> loginss:wallen92@hotmail.com,01110760216
+ERROR - 2016-10-17 18:11:55 --> login
+ERROR - 2016-10-17 18:11:55 --> 90f0938bfc051175ef21951b0a94826d98826b5dbe49330b10bbe10e881f84ff-68-1
+ERROR - 2016-10-17 18:12:16 --> 90f0938bfc051175ef21951b0a94826d98826b5dbe49330b10bbe10e881f84ff-68-1
+ERROR - 2016-10-17 18:12:59 --> 90f0938bfc051175ef21951b0a94826d98826b5dbe49330b10bbe10e881f84ff-68-1
+ERROR - 2016-10-17 18:13:18 --> 90f0938bfc051175ef21951b0a94826d98826b5dbe49330b10bbe10e881f84ff-68-1
+ERROR - 2016-10-17 18:13:35 --> 90f0938bfc051175ef21951b0a94826d98826b5dbe49330b10bbe10e881f84ff-68-1
+ERROR - 2016-10-17 18:13:49 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 18:13:54 --> 90f0938bfc051175ef21951b0a94826d98826b5dbe49330b10bbe10e881f84ff-68-1
+ERROR - 2016-10-17 18:14:42 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 18:19:38 --> 79b7d154e92a6451fe24dd5f872c82db1283f788170350a65ca52e6a7e366e91-20-1
+ERROR - 2016-10-17 18:29:46 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 18:30:58 --> APA91bGbTmiy6ZBsM72YXzLqmw4l9qio24G9t-6To4xk8uP3Mhi7CTxxrb3aXcc0TAtq6c0P1PLSmnIhb6HcqNkUMqLzrdZ9Pk9yeF891fsCizRMRRd_fAk-34-2
+ERROR - 2016-10-17 18:33:11 --> APA91bGbTmiy6ZBsM72YXzLqmw4l9qio24G9t-6To4xk8uP3Mhi7CTxxrb3aXcc0TAtq6c0P1PLSmnIhb6HcqNkUMqLzrdZ9Pk9yeF891fsCizRMRRd_fAk-34-2
+ERROR - 2016-10-17 18:33:37 --> APA91bGbTmiy6ZBsM72YXzLqmw4l9qio24G9t-6To4xk8uP3Mhi7CTxxrb3aXcc0TAtq6c0P1PLSmnIhb6HcqNkUMqLzrdZ9Pk9yeF891fsCizRMRRd_fAk-34-2
+ERROR - 2016-10-17 18:37:26 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 18:40:08 --> APA91bHMi0Ddsv1bf4qhksP9IoVX6QmSrjccM0tYbrZcPcZOmUP893YcYEu6PH8d6E9yfbRv2SxMjD2yAollY-o7OGVBFI_-qd8VnrAGimHH9dmH4PkTo9E-51-2
+ERROR - 2016-10-17 18:43:30 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 18:44:45 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 18:45:45 --> f288c7eaac9d4a5954fb83c9a2321af8fe2aa7d08e8efc048bd4517ebe5d609c-57-1
+ERROR - 2016-10-17 18:45:59 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 18:46:51 --> APA91bFHbwdlNMxFIV5GQce6RLLNrkWzMdN4ow_WUHsYJd92W1iMjKCMSApY3Mxv_lpales5XXgoW76CI7BanknyHVBu1XtYfPhcs9pIVw1dHh_TaaQtl9o--2
+ERROR - 2016-10-17 18:46:53 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 18:47:14 --> ce9034fb572cdb034e303afbc1368303f53bad67eb88ee4a74b4e106b062098b-38-1
+ERROR - 2016-10-17 18:50:37 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 18:55:02 --> register, code:3818
+ERROR - 2016-10-17 18:55:02 --> register_succes:69
+ERROR - 2016-10-17 18:55:02 --> an error has occured: OK: 59291_164_163<br>
+ERROR - 2016-10-17 18:55:16 --> verification: user_id:69,code:3818
+ERROR - 2016-10-17 18:56:04 --> APA91bHMi0Ddsv1bf4qhksP9IoVX6QmSrjccM0tYbrZcPcZOmUP893YcYEu6PH8d6E9yfbRv2SxMjD2yAollY-o7OGVBFI_-qd8VnrAGimHH9dmH4PkTo9E-51-2
+ERROR - 2016-10-17 18:56:05 --> loginss:hctang1960@yahoo.co.uk,joetang1960
+ERROR - 2016-10-17 18:56:05 --> login
+ERROR - 2016-10-17 18:56:06 --> ef13993ec9fb08cde0fdcc02d3cfafa7a67ff1672678e0be031d9560f1ffb6e0-69-1
+ERROR - 2016-10-17 18:56:26 --> SELECT `user_id` FROM `token` WHERE `token` = '2f74c98a2d079bb8f4af3da84d7704273b1b7473d2adca1424715fa9ddb14f73'
+ERROR - 2016-10-17 18:56:49 --> SELECT `user_id` FROM `token` WHERE `token` = '2f74c98a2d079bb8f4af3da84d7704273b1b7473d2adca1424715fa9ddb14f73'
+ERROR - 2016-10-17 18:57:09 --> 6cad17a017aa40c7427d102a90a8acc3f9f76d0f0b67ac79ed7e36c2bf750f2d-32-1
+ERROR - 2016-10-17 18:57:23 --> 6cad17a017aa40c7427d102a90a8acc3f9f76d0f0b67ac79ed7e36c2bf750f2d-32-1
+ERROR - 2016-10-17 18:57:56 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 18:57:57 --> 6cad17a017aa40c7427d102a90a8acc3f9f76d0f0b67ac79ed7e36c2bf750f2d-32-1
+ERROR - 2016-10-17 18:58:18 --> 6cad17a017aa40c7427d102a90a8acc3f9f76d0f0b67ac79ed7e36c2bf750f2d-32-1
+ERROR - 2016-10-17 18:59:03 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 19:05:46 --> APA91bGbTmiy6ZBsM72YXzLqmw4l9qio24G9t-6To4xk8uP3Mhi7CTxxrb3aXcc0TAtq6c0P1PLSmnIhb6HcqNkUMqLzrdZ9Pk9yeF891fsCizRMRRd_fAk-34-2
+ERROR - 2016-10-17 19:10:45 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 19:26:49 --> APA91bGbTmiy6ZBsM72YXzLqmw4l9qio24G9t-6To4xk8uP3Mhi7CTxxrb3aXcc0TAtq6c0P1PLSmnIhb6HcqNkUMqLzrdZ9Pk9yeF891fsCizRMRRd_fAk-34-2
+ERROR - 2016-10-17 19:27:35 --> APA91bGbTmiy6ZBsM72YXzLqmw4l9qio24G9t-6To4xk8uP3Mhi7CTxxrb3aXcc0TAtq6c0P1PLSmnIhb6HcqNkUMqLzrdZ9Pk9yeF891fsCizRMRRd_fAk-34-2
+ERROR - 2016-10-17 19:27:54 --> APA91bGbTmiy6ZBsM72YXzLqmw4l9qio24G9t-6To4xk8uP3Mhi7CTxxrb3aXcc0TAtq6c0P1PLSmnIhb6HcqNkUMqLzrdZ9Pk9yeF891fsCizRMRRd_fAk-34-2
+ERROR - 2016-10-17 19:28:55 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 19:33:59 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 19:35:06 --> APA91bGbTmiy6ZBsM72YXzLqmw4l9qio24G9t-6To4xk8uP3Mhi7CTxxrb3aXcc0TAtq6c0P1PLSmnIhb6HcqNkUMqLzrdZ9Pk9yeF891fsCizRMRRd_fAk-34-2
+ERROR - 2016-10-17 19:44:13 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 19:53:54 --> APA91bHMi0Ddsv1bf4qhksP9IoVX6QmSrjccM0tYbrZcPcZOmUP893YcYEu6PH8d6E9yfbRv2SxMjD2yAollY-o7OGVBFI_-qd8VnrAGimHH9dmH4PkTo9E-51-2
+ERROR - 2016-10-17 21:34:15 --> 6cad17a017aa40c7427d102a90a8acc3f9f76d0f0b67ac79ed7e36c2bf750f2d-32-1
+ERROR - 2016-10-17 21:44:03 --> 79b7d154e92a6451fe24dd5f872c82db1283f788170350a65ca52e6a7e366e91-20-1
+ERROR - 2016-10-17 21:48:58 --> APA91bHGL8u4wL1ORtKBMKQpyZ4o8WvKUuw9SgdnnhOFitkpTqS6SDJoN2df4ZA5ZAMpoy40NniKQbnxmEnJH1iWuu95Xm4wfEGwBcXCcPeWGuO3lwVvbhw-59-2
+ERROR - 2016-10-17 22:20:08 --> 6cad17a017aa40c7427d102a90a8acc3f9f76d0f0b67ac79ed7e36c2bf750f2d-32-1
+ERROR - 2016-10-17 22:56:41 --> APA91bGbTmiy6ZBsM72YXzLqmw4l9qio24G9t-6To4xk8uP3Mhi7CTxxrb3aXcc0TAtq6c0P1PLSmnIhb6HcqNkUMqLzrdZ9Pk9yeF891fsCizRMRRd_fAk-34-2
+ERROR - 2016-10-17 23:02:06 --> f8221901b5004dd546f2a54bf90ffa16d1e22d4c6c81009efdf9bb7cf796e9f1-36-1
+ERROR - 2016-10-17 23:07:44 --> APA91bG-t9M8XRPnlkDM3Cdx0_Vc8QwyONbLIW8iKVb0yK2kABxCxhsQZWRYlGL9sgtJNthCAQObRIVTRSeZToxfG7CEa1C27puYD0L33u43BOjTz-gwcRY-21-2
+ERROR - 2016-10-17 23:08:02 --> APA91bG-t9M8XRPnlkDM3Cdx0_Vc8QwyONbLIW8iKVb0yK2kABxCxhsQZWRYlGL9sgtJNthCAQObRIVTRSeZToxfG7CEa1C27puYD0L33u43BOjTz-gwcRY-21-2
+ERROR - 2016-10-17 23:09:18 --> APA91bG-t9M8XRPnlkDM3Cdx0_Vc8QwyONbLIW8iKVb0yK2kABxCxhsQZWRYlGL9sgtJNthCAQObRIVTRSeZToxfG7CEa1C27puYD0L33u43BOjTz-gwcRY-21-2
+ERROR - 2016-10-17 23:19:26 --> f288c7eaac9d4a5954fb83c9a2321af8fe2aa7d08e8efc048bd4517ebe5d609c-57-1
+ERROR - 2016-10-17 23:19:41 --> f288c7eaac9d4a5954fb83c9a2321af8fe2aa7d08e8efc048bd4517ebe5d609c-57-1
+ERROR - 2016-10-17 23:21:13 --> f288c7eaac9d4a5954fb83c9a2321af8fe2aa7d08e8efc048bd4517ebe5d609c-57-1
+ERROR - 2016-10-17 23:24:51 --> 79b7d154e92a6451fe24dd5f872c82db1283f788170350a65ca52e6a7e366e91-20-1
+ERROR - 2016-10-17 23:38:20 --> 79b7d154e92a6451fe24dd5f872c82db1283f788170350a65ca52e6a7e366e91-20-1

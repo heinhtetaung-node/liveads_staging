@@ -1,0 +1,83 @@
+#shops-list .img{
+float:left;
+ margin-right: 35px; 
+} 
+#shops-list img{
+border:1px solid #eee;
+} 
+
+#coupons-list .img,
+#events-list .img,
+#live-grid-list .img
+{
+float:left;
+ margin-right: 35px;
+ max-width:280px;
+
+}
+#coupons-list .img img,
+#events-list .img img,
+#live-grid-list .img img
+{
+ border:1px solid #eee;
+}
+#coupons-list .cp-item-wrapper,
+#events-list .ev-item-wrapper,
+#live-grid-list .gd-item-wrapper,
+#shops-list .gd-item-wrapper
+{
+ margin-bottom: 35px;
+min-height: 230px;
+ }
+#coupons-list .comment,
+#events-list .comment,
+#live-grid-list .comment
+{
+text-align:center;
+}
+
+
+
+.coupon-detail-title,
+.event-detail-title,
+.product-detail-title
+{
+background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+color: #434571;
+font-size: 17px;
+font-weight: 700;
+padding: 7px 0;
+text-align: center;
+text-transform: uppercase;
+margin-top:40px;
+margin-bottom:20px;
+}
+
+.coupon-detail-title span,
+.event-detail-title span,
+.product-detail-title span
+{
+text-transform: capitalize;
+}
+
+.coupon-detail-wrapper img,
+.event-detail-wrapper img,
+.product-detail-wrapper img
+{
+ border:1px solid #eee;
+ width:100%;
+ 
+}
+.coupon-detail-wrapper .img_inner,
+.event-detail-wrapper .img_inner,
+.product-detail-wrapper .img_inner
+{
+padding:20px 0 ;
+max-width:370px
+}
+.coupon-detail-wrapper .desc,
+.event-detail-wrapper .desc,
+.product-detail-wrapper .desc
+{
+ padding: 20px 0;
+}

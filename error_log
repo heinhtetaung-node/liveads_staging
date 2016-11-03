@@ -1,0 +1,7 @@
+[04-Oct-2016 20:27:01 Asia/Singapore] PHP Fatal error:  Call to undefined method Invite::uri_segment() in /home/liveads88/public_html/application/controllers/Invite.php on line 20
+[17-Oct-2016 14:43:45 Asia/Singapore] PHP Parse error:  syntax error, unexpected end of file in /home/liveads88/public_html/application/views/invite/referrer.php on line 37
+[22-Oct-2016 00:44:49 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/application/controllers/Home.php on line 29
+[22-Oct-2016 00:46:30 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/application/controllers/Home.php on line 29
+[22-Oct-2016 00:47:28 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/application/controllers/Home.php on line 29
+[22-Oct-2016 13:49:06 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/application/controllers/Home.php on line 29
+[25-Oct-2016 11:08:02 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/application/controllers/Home.php on line 29

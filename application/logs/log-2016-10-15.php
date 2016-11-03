@@ -1,0 +1,34 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2016-10-15 06:26:15 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2016-10-15 12:28:05 --> 404 Page Not Found: Faviconico/index
+ERROR - 2016-10-15 17:00:36 --> 404 Page Not Found: Administrator/index
+ERROR - 2016-10-15 17:00:36 --> 404 Page Not Found: Administrator/index.php
+ERROR - 2016-10-15 17:08:35 --> 404 Page Not Found: Wp-loginphp/index
+ERROR - 2016-10-15 17:08:36 --> 404 Page Not Found: Wp-admin/index
+ERROR - 2016-10-15 17:15:41 --> 404 Page Not Found: Adminphp/index
+ERROR - 2016-10-15 17:16:42 --> 404 Page Not Found: Admin/index
+ERROR - 2016-10-15 17:28:34 --> 404 Page Not Found: Administrator/index
+ERROR - 2016-10-15 17:28:35 --> 404 Page Not Found: Administrator/index.php
+ERROR - 2016-10-15 17:35:33 --> 404 Page Not Found: Wp-loginphp/index
+ERROR - 2016-10-15 17:35:33 --> 404 Page Not Found: Wp-admin/index
+ERROR - 2016-10-15 17:38:46 --> 404 Page Not Found: Adminphp/index
+ERROR - 2016-10-15 17:39:45 --> 404 Page Not Found: Admin/index
+ERROR - 2016-10-15 18:11:46 --> 404 Page Not Found: Administrator/index
+ERROR - 2016-10-15 18:11:47 --> 404 Page Not Found: Administrator/index.php
+ERROR - 2016-10-15 18:19:07 --> 404 Page Not Found: Wp-loginphp/index
+ERROR - 2016-10-15 18:19:08 --> 404 Page Not Found: Wp-admin/index
+ERROR - 2016-10-15 18:23:28 --> 404 Page Not Found: Adminphp/index
+ERROR - 2016-10-15 18:25:05 --> 404 Page Not Found: Admin/index
+ERROR - 2016-10-15 18:30:22 --> 404 Page Not Found: Administrator/index
+ERROR - 2016-10-15 18:30:22 --> 404 Page Not Found: Administrator/index.php
+ERROR - 2016-10-15 18:37:47 --> 404 Page Not Found: Wp-loginphp/index
+ERROR - 2016-10-15 18:37:48 --> 404 Page Not Found: Wp-admin/index
+ERROR - 2016-10-15 18:41:39 --> 404 Page Not Found: Adminphp/index
+ERROR - 2016-10-15 18:43:01 --> 404 Page Not Found: Admin/index
+ERROR - 2016-10-15 18:48:42 --> 404 Page Not Found: Administrator/index
+ERROR - 2016-10-15 18:48:42 --> 404 Page Not Found: Administrator/index.php
+ERROR - 2016-10-15 18:56:31 --> 404 Page Not Found: Wp-loginphp/index
+ERROR - 2016-10-15 18:56:32 --> 404 Page Not Found: Wp-admin/index
+ERROR - 2016-10-15 18:59:52 --> 404 Page Not Found: Adminphp/index
+ERROR - 2016-10-15 19:01:14 --> 404 Page Not Found: Admin/index

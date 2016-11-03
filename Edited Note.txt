@@ -1,0 +1,21 @@
+Coding changes
+Admin
+1. view/admin/sidebar
+2. view/adscomponent folder
+3. controller/Adscomponent.php
+4. uploads/adscomponent folder
+5. models/Adscomponent_Model.php
+
+Website
+6. views/header.php
+7. views/customer_header.php
+8. controller/advertise.php
+9. controller/customer.php
+10. model/Customer_model.php
+
+Database changes
+1. add table adscomponent
+2. add table adscomponent_price
+
+
+Data changes
