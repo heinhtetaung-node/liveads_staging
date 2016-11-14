@@ -136,6 +136,11 @@
 						<li><a href="<?php echo base_url(); ?>LangSwitch/switchLanguage/chinese"><img title="English" alt="English" src="<?php echo base_url();?>assets/themes/image/flags/cn.png"> Chinese</a></li>
 					  </ul>
 			  </div>
+			  <?php if($this->session->userdata('cart')!=""){ ?>
+			  <a href="<?php echo base_url(); ?>advertise/checkout"  style="color:inherit" >
+					<i style="font-size:20px" class="fa fa-shopping-cart social_icon shoppingicon"><span style="font-size:7px"class="label label-warning"><?php echo sizeof($this->session->userdata('cart')); ?></span></i>                                                           
+				</a>
+			  <?php } ?>
 			</div>
 			<?php /*
 				<div class="pull-left currency">

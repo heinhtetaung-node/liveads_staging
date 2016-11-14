@@ -22,6 +22,23 @@
 	top: 8px;
     width: 63px;
 }
+.title{
+	font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #434571;
+}
+.price{
+	font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+hr{
+	margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
 </style>  
   
 
@@ -35,18 +52,30 @@
 					foreach($ads as $a){ ?>
 					<div class="col-xs-12">
 						<div class="col-md-3">
-							<?php echo $a['adsname']; ?>
-							<br>
-							<img style="width:80%" src="<?php echo base_url(); ?>app_liveads88/uploads/adscomponent/<?php echo $a['previewphoto_m']; ?>" />
+							<img style="margin-top:10px; width:160px; height:280px;" src="<?php echo base_url(); ?>app_liveads88/uploads/adscomponent/<?php echo $a['previewphoto_m']; ?>" />
+							<br class="visible-lg"><br class="visible-lg"><br class="visible-lg">
+							<br class="visible-md"><br class="visible-md"><br class="visible-md">
 						</div>
 						<div class="col-md-3">
+							<br>
+							<div class="title"><?php echo $a['adsname']; ?></div>
+							<br>
 							<?php echo $a['description']; ?>
 						</div>
 						<div class="col-md-3">
-							<?php echo $a['price_options']; ?>
+							<br>
+							<div class="title visible-md"><br></div>
+							<div class="title visible-lg"><br></div>
+							<br class="visible-md">
+							<div class="price"><?php echo $a['price_options']; ?></div>
+							
 						</div>
 						<div class="col-md-3">
-							<button class="btn btn-warning">Buy Ads</button>
+							<br>
+							<div class="title visible-md"><br></div>
+							<br class="visible-md">
+							<a href="<?php echo base_url(); ?>advertise/buyads/<?php echo $a['adscomponent_id']; ?>"><button class="btn btn-warning">Buy Ads</button></a>
+							<br><hr class="visible-xs">
 						</div>
 					</div>
 					<?php

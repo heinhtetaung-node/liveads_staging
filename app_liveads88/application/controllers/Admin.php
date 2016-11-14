@@ -55,7 +55,11 @@ class Admin extends CI_Controller {
 			$email = $this->input->post('email');
 			$password = $this->input->post('password');
 			if($this->Admin_model->CheckUser($email, $password,1)){
-		
+				if($this->session->userdata('previous_page')!=""){
+					$redirectpath=$this->session->userdata('previous_page');
+					$this->session->unset_userdata('previous_page');
+					redirect($redirectpath);
+				}
 				redirect('admin/index');
 			}else{
 				$this->session->set_flashdata('msg', '<span class="error">Failed Login: Check your username and password!</span>');

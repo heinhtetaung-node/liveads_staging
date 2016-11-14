@@ -2,6 +2,12 @@
 
 class Coupon_Model extends CI_Model
 {
+
+	function addCoupon($data){
+		$this->db->set('cp_created', 'NOW()', FALSE);
+		$this->db->insert('coupon', $data);
+		return true;
+	}
 	
 	function getCoupons($keywords){
 

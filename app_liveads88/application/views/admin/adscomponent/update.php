@@ -80,7 +80,7 @@
                       <label for="title" class="control-label col-md-3 col-sm-3 col-xs-12"> Description <span class="required">*</span>
                       </label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                        <textarea style="height:150px" class="form-control col-md-7 col-xs-12"  id="description" name="description"><?php echo set_value('adsname', $ads->adsname); ?></textarea>
+                        <textarea style="height:150px" class="form-control col-md-7 col-xs-12"  id="description" name="description"><?php echo set_value('adsname', $ads->description); ?></textarea>
 					  <?php echo form_error('description');?> 
 					</div>
 					</div>

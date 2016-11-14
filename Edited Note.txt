@@ -6,16 +6,42 @@ Admin
 4. uploads/adscomponent folder
 5. models/Adscomponent_Model.php
 
+--- second staging upload ---
+6. view/admin/sidebar
+7. view/admin/adscomponent/payment
+8. view/admin/adscomponent/purchaseads
+9. view/admin/adscomponent/purchaseadsdetail
+10. models/Adscomponent_Model.php
+
 Website
 6. views/header.php
 7. views/customer_header.php
 8. controller/advertise.php
 9. controller/customer.php
 10. model/Customer_model.php
+11. view/advertise/add.php
+
+--- second staging upload ---
+12. assets/css/custom_hh.css
+13. model/Coupon_Model(no need)
+14. controller/advertise
+15. views/customer_header.php
+16. views/advertise/adsforms folder
+17. model/Adscomponent_Model
 
 Database changes
 1. add table adscomponent
 2. add table adscomponent_price
+3. modifiy customer table add column cu_created_by(tinyint, comment - 0 is admin, 1 is theemselves)
+
+--- second staging upload ---
+1. addtable purchaseads_payment
+2. addtable purchaseads_items
+3. ALTER TABLE `coupon` ADD `ispurchased` TINYINT NOT NULL DEFAULT '0' , ADD `payment_id` INT NULL DEFAULT NULL , ADD `purchase_itemid` INT NULL DEFAULT NULL ;
+4. ALTER TABLE `product` ADD `ispurchased` TINYINT NOT NULL DEFAULT '0' , ADD `payment_id` INT NULL DEFAULT NULL , ADD `purchase_itemid` INT NULL DEFAULT NULL ;
+5. ALTER TABLE `event` ADD `ispurchased` TINYINT NOT NULL DEFAULT '0' , ADD `payment_id` INT NULL DEFAULT NULL , ADD `purchase_itemid` INT NULL DEFAULT NULL ;
+6. ALTER TABLE `job` ADD `ispurchased` TINYINT NOT NULL DEFAULT '0' , ADD `payment_id` INT NULL DEFAULT NULL , ADD `purchase_itemid` INT NULL DEFAULT NULL ;
+ 
 
 
 Data changes

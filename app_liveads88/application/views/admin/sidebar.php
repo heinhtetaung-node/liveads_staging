@@ -18,6 +18,9 @@
               <ul class="nav side-menu">
 				 <li><a href="<?php echo base_url();?>admin/dashboard"><i class="fa fa-bar-chart"></i>Dashboard</a>
 				 <li><a href="<?php echo base_url();?>adscomponent"><i class="fa fa-dollar"></i>Ads Component</a>
+				 <li><a href="<?php echo base_url();?>adscomponent/payment"><i class="fa fa-dollar"></i>Advertiser Payment</a>
+				 <li><a href="<?php echo base_url();?>adscomponent/purchaseads"><i class="fa fa-dollar"></i>Purchase Ads</a>
+				 
 				 <li><a href="<?php echo base_url();?>customer"><i class="fa fa-user"></i>Customers</a>
 				 <li><a href="<?php echo base_url();?>shopflyer"><i class="fa fa-user"></i>Flyer</a>
 				 <li><a href="<?php echo base_url();?>user"><i class="fa fa-users"></i>Users</a>

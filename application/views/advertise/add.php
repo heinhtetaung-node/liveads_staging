@@ -59,8 +59,8 @@
 				 <?php echo $this->session->flashdata('msg'); ?>
                   <br>
 					<div class="form-group col-md-12 col-sm-12 col-xs-12">
-						<h3>Register Account</h3>
-						<p>If you already have an account with us, please login at the <a href="<?php echo base_url();?>customer/login">login page</a>.</p>
+						<h3>Register Advertiser Account</h3>
+						<p>If you already have an advertiser account with us, please login at the <a href="<?php echo base_url();?>customer/login">login page</a>.</p>
 					</div>
 				  
                   <form name="data_form" method="POST" action="<?php echo base_url(); ?>advertise/register" id="customer_form" enctype="multipart/form-data">

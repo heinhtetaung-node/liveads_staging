@@ -1,0 +1,47 @@
+issue(1):({
+	Tag (1): jquery code for find next div
+	
+	https://api.jquery.com/next/
+	$( "p" ).next( ".selected" ).css( "background", "yellow" );
+});
+
+
+issue(2):({
+	Tag (1): jquery code for clone div
+	
+	$( ".hello" ).clone().appendTo( ".goodbye" );
+	https://api.jquery.com/clone/
+});
+
+issue(3):({
+	Tag (1): php code for delete file
+	
+	unlink('test.html');
+});
+
+issue(4):({
+	Tag (1): php code for string cut using trim
+	
+	$str = "Hello World!";
+	echo $str . "<br>";  //Hello World!
+	echo trim($str,"Hed!");//llo Worl	
+
+});
+
+issue(5):({
+	Tag (1): php code to remove space from string and Make a string lowercase - PHP
+	
+	$string = str_replace(' ', '', $string);
+	
+	$str = mb_strtolower($str, 'UTF-8');
+
+});
+
+issue(6):({
+	Tag (1): php code to get last segment url
+	$url = "http://foobar.com/foo/bar/1";
+	$lastSegment = basename(parse_url($url, PHP_URL_PATH));
+	echo $lastSegment; //1
+	echo $_SERVER['REQUEST_URI']; exit; // php code for get current uri
+	
+});

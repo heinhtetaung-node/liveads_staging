@@ -11,6 +11,15 @@ class Adscomponent extends CI_Controller {
 	
 	public function __construct() {
 		parent::__construct();
+		
+		if($this->session->userdata('isLogin') && $this->session->userdata('user_level') == 'admin' &&  $this->session->userdata('admin_id') > 0 ){
+			
+		}else{
+			$this->session->set_userdata('previous_page', 'adscomponent');
+			//echo $this->session->userdata('previous_page'); exit;
+			header('location:Admin/login');
+		}
+		
 		$this->load->model('Adscomponent_Model');
 		$this->load->library(array('form_validation','session','pagination'));
         $this->load->helper(array('url','html','form'));
@@ -275,6 +284,29 @@ class Adscomponent extends CI_Controller {
 		}else{
 			redirect('adscomponent');
 		}
+	}
+	
+	public function payment(){
+		$data['payment']=$this->Adscomponent_Model->getAdvertiserPayment();
+		$this->load->view('admin/header');
+		$this->load->view('admin/sidebar');
+		$this->load->view('admin/adscomponent/payment',$data);
+		$this->load->view('admin/footer');	
+	}
+	public function purchaseads(){
+		$data['ads']=$this->Adscomponent_Model->getPurchaseAds();
+		$this->load->view('admin/header');
+		$this->load->view('admin/sidebar');
+		$this->load->view('admin/adscomponent/purchaseads',$data);
+		$this->load->view('admin/footer');	
+	}
+	public function purchasedetail($id){
+		$data['payment']=$this->Adscomponent_Model->getAdvertiserPaymentbyid($id);
+		$data['ads']=$this->Adscomponent_Model->getPurchaseAdsbyid($id);
+		$this->load->view('admin/header');
+		$this->load->view('admin/sidebar');
+		$this->load->view('admin/adscomponent/purchaseadsdetail',$data);
+		$this->load->view('admin/footer');	
 	}
 	
 	/**
