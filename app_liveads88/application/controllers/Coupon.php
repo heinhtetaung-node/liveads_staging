@@ -39,13 +39,57 @@ class Coupon extends CI_Controller {
     * Add about coupon datatable
     * @Ei
     */
+	public function approve($coupon_id, $valid_from, $purchase_itemid){
+		//echo $valid_from; exit;
+		$ads=array();
+		$sql="
+				SELECT p.price, p.days
+				FROM coupon c
+				INNER JOIN purchaseads_items pi
+				ON c.purchase_itemid=pi.item_id
+				INNER JOIN adscomponent_price p
+				ON pi.selectedpriceid=p.price_id
+				WHERE c.cp_id=$coupon_id
+			";
+		
+		$query = $this->db->query($sql);
+		if($query->num_rows() > 0)
+		{
+			$ads=$query->row();
+		}
+		
+		//echo $valid_from; echo "<br>";
+		//echo date('Y-m-d', strtotime("+30 days")); // get next 30 days after current date
+		//$newDate = date('Y-m-d', strtotime('+15 days',$valid_from));
+		
+	$date = strtotime(date("Y-m-d", strtotime($valid_from)) . " +{$ads->days} days"); // get next 30 days from valid from date
+
+		$cp_valid_to=date('Y-m-d', $date);
+		
+		$this->db->query(
+			"UPDATE `coupon` SET `livestatus` = '2', cp_valid_to='$cp_valid_to', paid_ads_start_date='$valid_from', paid_ads_end_date='$cp_valid_to' WHERE `cp_id` = ".$coupon_id
+		);
+		$this->session->set_flashdata('msg', '<div class="alert alert-success text-center">This item is approved by admin.</div>');
+		redirect('coupon/update/'.$coupon_id);
+	}
+	public function reject($coupon_id, $valid_from){
+		//echo $valid_from; exit;
+		//echo "UPDATE `coupon` SET `livestatus` = '1', cp_valid_to = NULL WHERE `cp_id` = ".$coupon_id; exit;
+		$this->db->query(
+			"UPDATE `coupon` SET `livestatus` = '1', cp_valid_to = NULL WHERE `cp_id` = ".$coupon_id
+		);
+		
+		$this->session->set_flashdata('msg', '<div class="alert alert-success text-center">This item is rejected by admin.</div>');
+		redirect('coupon/update/'.$coupon_id);
+	}
+	
 	public function coupon_datatable(){
 		$requestData= $_REQUEST;
  
 		$columns = array( 
 			0 =>'cp_created',	
 			);	
-			
+		$countsql="";
 		$sql = "SELECT customer.cu_name,
 				`coupon`.cp_id,
 				`coupon`.customer_id,
@@ -54,22 +98,26 @@ class Coupon extends CI_Controller {
 				`coupon`.cp_quantity,
 				`coupon`.cp_code,
 				`coupon`.cp_valid_from,
-				`coupon`.cp_valid_to";
-		$sql.=" FROM
+				`coupon`.cp_valid_to,
+				`coupon`.ispurchased,
+				`coupon`.livestatus";
+		$countsql.=" FROM
 				`coupon`
-				INNER JOIN customer ON `coupon`.customer_id = customer.cu_id WHERE 1=1";
+				LEFT JOIN customer ON `coupon`.customer_id = customer.cu_id WHERE 1=1";
 		if( !empty($requestData['search']['value']) ) {  
-			$sql.=" AND ( `coupon`.cp_name LIKE '".$requestData['search']['value']."%' )";    
+			$countsql.=" AND ( `coupon`.cp_name LIKE '".$requestData['search']['value']."%' )";    
 		}
-		$sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
-
+		//echo $requestData['order'][0]['column'];
+		$countsql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir'];
+		$limitsql="  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
+		$sql=$sql.$countsql.$limitsql;
+		//echo $countsql; exit;
 		$query = $this->db->query($sql);
 		//print_r($query->result());
-// 		$recordsFiltered = $this->db->query("SELECT FOUND_ROWS()")->row(0)->{"FOUND_ROWS()"}; 
+		//$recordsFiltered = $this->db->query("SELECT FOUND_ROWS()")->row(0)->{"FOUND_ROWS()"}; 
 		//echo $recordsFiltered;
 		$resTotalLength = $this->db->query(
-			"SELECT COUNT(*) as rowcount FROM coupon"
-
+			"SELECT COUNT(*) as rowcount ".$countsql
 		);
 		$recordsTotal = $resTotalLength->row()->rowcount;
 		$recordsFiltered = $recordsTotal;
@@ -77,6 +125,7 @@ class Coupon extends CI_Controller {
 		$result_array = array();
 		foreach ($result as $key => $row) {
 			$tmpentry = array();
+			
 			$tmpentry[] = $row['cp_name'];
 			$tmpentry[] = $row['cu_name'];
 			$tmpentry[] = $row['cp_quantity'];			
@@ -84,8 +133,16 @@ class Coupon extends CI_Controller {
 			$tmpentry[] = $row['cp_code'];
 			$tmpentry[] = $row['cp_valid_from'];
 			$tmpentry[] = $row['cp_valid_to'];
-			$tmpentry[] = "<a href='".base_url()."coupon/update/".$row['cp_id']."' class='btn btn-info'>Edit</a><a href='".base_url()."coupon/deleteCoupon/".$row['cp_id']."' class='btn btn-danger' onclick='return confirm(\"Are you sure?\")'>Delete</a>";			
-
+			
+			if($row['livestatus']==0 && $row['ispurchased']==0){
+			$tmpentry[] = "<a href='".base_url()."coupon/update/".$row['cp_id']."' class='btn btn-info'>Edit</a><a href='".base_url()."coupon/deleteCoupon/".$row['cp_id']."' class='btn btn-danger' onclick='return confirm(\"Are you sure?\")'>Delete</a>";
+			}else if($row['livestatus']==1 && $row['ispurchased']==1){		
+			$tmpentry[] = "<a href='".base_url()."coupon/update/".$row['cp_id']."' class='btn btn-primary'>Approve</a>";
+			}else if($row['livestatus']==0 && $row['ispurchased']==1){
+			$tmpentry[] = "<a href='".base_url()."coupon/update/".$row['cp_id']."' class='btn btn-info'>Detail</a>";
+			}else if($row['livestatus']==2 && $row['ispurchased']==1){
+			$tmpentry[] = "<a href='".base_url()."coupon/update/".$row['cp_id']."' class='btn btn-info'>Detail</a>";
+			}
 			$result_array[] = $tmpentry;
 		}
 		

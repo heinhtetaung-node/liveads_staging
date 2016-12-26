@@ -312,6 +312,9 @@ class Product_model extends CI_Model
 		$sql = "SELECT
 				customer.cu_name,
 				product.pro_id,
+				product.purchase_itemid,
+				product.livestatus,
+				product.ispurchased,
 				product.customer_id,
 				product.pro_title,
 				product.pro_image_base64,

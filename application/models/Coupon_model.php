@@ -31,7 +31,7 @@ class Coupon_Model extends CI_Model
 				ON cp_sub.cp_id = cp.cp_id
 				
 				WHERE
-				(cp.cp_valid_from <= DATE(NOW())AND cp.cp_valid_to >= DATE(NOW()) AND cp.cp_type ='date') OR (cp.cp_quantity > cp.cp_usage AND cp.cp_type ='quantity') 
+				(cp.cp_valid_from <= DATE(NOW()) AND cp.cp_valid_to >= DATE(NOW()) AND cp.cp_type ='date') OR (cp.cp_quantity > cp.cp_usage AND cp.cp_type ='quantity') 
 				 AND cp.cp_status = 0 ";
 		if($keywords!=""){
 		$sql.= " AND (cp.cp_name LIKE '%".$keywords."%' OR cp.cp_description LIKE '%".$keywords."%' )";

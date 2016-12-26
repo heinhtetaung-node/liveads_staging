@@ -101,6 +101,9 @@ class Event_Model extends CI_Model
 	function getEventById($ev_id){
 		$sql = "SELECT
 				`event`.ev_id,
+				`event`.livestatus,
+				`event`.purchase_itemid,
+				`event`.ispurchased,
 				`event`.ev_title,
 				`event`.ev_location,
 				`event`.ev_description,

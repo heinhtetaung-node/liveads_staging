@@ -23,6 +23,50 @@ class Product extends CI_Controller {
 		}
 	}
 	
+	public function approve($pro_id, $valid_from, $purchase_itemid){
+		//echo $valid_from; exit;
+		$ads=array();
+		$sql="
+				SELECT p.price, p.days
+				FROM product c
+				INNER JOIN purchaseads_items pi
+				ON c.purchase_itemid=pi.item_id
+				INNER JOIN adscomponent_price p
+				ON pi.selectedpriceid=p.price_id
+				WHERE c.pro_id=$pro_id
+			";
+		
+		$query = $this->db->query($sql);
+		if($query->num_rows() > 0)
+		{
+			$ads=$query->row();
+		}
+		
+		//echo $valid_from; echo "<br>";
+		//echo date('Y-m-d', strtotime("+30 days")); // get next 30 days after current date
+		//$newDate = date('Y-m-d', strtotime('+15 days',$valid_from));
+		
+	$date = strtotime(date("Y-m-d", strtotime($valid_from)) . " +{$ads->days} days"); // get next 30 days from valid from date
+
+		$cp_valid_to=date('Y-m-d', $date);
+		
+		$this->db->query(
+			"UPDATE `product` SET `livestatus` = '2', pro_expired_date='$cp_valid_to', paid_ads_start_date='$valid_from', paid_ads_end_date='$cp_valid_to' WHERE `pro_id` = ".$pro_id
+		);
+		$this->session->set_flashdata('msg', '<div class="alert alert-success text-center">This item is approved by admin.</div>');
+		redirect('product/update/'.$pro_id);
+	}
+	public function reject($pro_id, $valid_from){
+		//echo $valid_from; exit;
+		//echo "UPDATE `coupon` SET `livestatus` = '1', cp_valid_to = NULL WHERE `cp_id` = ".$coupon_id; exit;
+		$this->db->query(
+			"UPDATE `product` SET `livestatus` = '1', pro_expired_date = NULL, paid_ads_end_date = NULL WHERE `pro_id` = ".$pro_id
+		);
+		
+		$this->session->set_flashdata('msg', '<div class="alert alert-success text-center">This item is rejected by admin.</div>');
+		redirect('product/update/'.$pro_id);
+	}
+	
 	 /**
     * Add about product list
     * @Ei
@@ -45,8 +89,11 @@ class Product extends CI_Controller {
 		$columns = array( 
 			0 =>'pro_created',	
 			);	
-			
+		
+		$countsql="";
 		$sql = "SELECT
+				product.livestatus,
+				product.ispurchased,
 				product.pro_id,
 				product.pro_price,
 				product.pro_description,
@@ -60,22 +107,27 @@ class Product extends CI_Controller {
 				customer.cu_name,
 				product.customer_id
 				";
-		$sql.=" FROM
+		$countsql=" FROM
 				`product`
-				INNER JOIN customer ON `product`.customer_id = customer.cu_id WHERE 1=1";
+				LEFT JOIN customer ON `product`.customer_id = customer.cu_id WHERE 1=1";
 		if( !empty($requestData['search']['value']) ) {  
-			$sql.=" AND ( product.pro_title LIKE '".$requestData['search']['value']."%' )";    
+			$countsql.=" AND ( product.pro_title LIKE '".$requestData['search']['value']."%' )";    
 		}
-		$sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
-
+		$countsql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir'];
+		$limitsql="  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
+		$sql=$sql.$countsql.$limitsql;
 		$query = $this->db->query($sql);
+		// echo $sql;
+		// echo "<br>";
+		// echo $countsql; exit;
 		//print_r($query->result());
 // 		$recordsFiltered = $this->db->query("SELECT FOUND_ROWS()")->row(0)->{"FOUND_ROWS()"}; 
 		//echo $recordsFiltered;
 		$resTotalLength = $this->db->query(
-			"SELECT COUNT(*) as rowcount FROM product"
+			"SELECT COUNT(*) as rowcount ".$countsql
 
 		);
+		//echo "SELECT COUNT(*) as rowcount ".$countsql; exit;
 		$recordsTotal = $resTotalLength->row()->rowcount;
 		$recordsFiltered = $recordsTotal;
 		$result = $query->result_array();
@@ -88,7 +140,7 @@ class Product extends CI_Controller {
 			}else{
 				$prod_stat = "both";
 			}
-			
+			$discount_amout="";
 			if($row['pro_discount_type'] == "%"){
 				$discount_amout = $row['pro_discount_amount']."%";
 			}else if($row['pro_discount_type'] == "$"){
@@ -101,7 +153,18 @@ class Product extends CI_Controller {
 			$tmpentry[] = $discount_amout;
 			$tmpentry[] = $row['pro_quantity'];		
 			$tmpentry[] = $prod_stat;			
-			$tmpentry[] = "<a href='".base_url()."product/update/".$row['pro_id']."' class='btn btn-info'>Edit</a><a href='".base_url()."product/deleteProduct/".$row['pro_id']."' class='btn btn-danger' onclick='return confirm(\"Are you sure?\")'>Delete</a>";			
+			//$tmpentry[] = "<a href='".base_url()."product/update/".$row['pro_id']."' class='btn btn-info'>Edit</a><a href='".base_url()."product/deleteProduct/".$row['pro_id']."' class='btn btn-danger' onclick='return confirm(\"Are you sure?\")'>Delete</a>";	
+
+			
+			if($row['livestatus']==0 && $row['ispurchased']==0){
+			$tmpentry[] = "<a href='".base_url()."product/update/".$row['pro_id']."' class='btn btn-info'>Edit</a><a href='".base_url()."product/deleteProduct/".$row['pro_id']."' class='btn btn-danger' onclick='return confirm(\"Are you sure?\")'>Delete</a>";
+			}else if($row['livestatus']==1 && $row['ispurchased']==1){		
+			$tmpentry[] = "<a href='".base_url()."product/update/".$row['pro_id']."' class='btn btn-primary'>Approve</a>";
+			}else if($row['livestatus']==0 && $row['ispurchased']==1){
+			$tmpentry[] = "<a href='".base_url()."product/update/".$row['pro_id']."' class='btn btn-info'>Detail</a>";
+			}else if($row['livestatus']==2 && $row['ispurchased']==1){
+			$tmpentry[] = "<a href='".base_url()."product/update/".$row['pro_id']."' class='btn btn-info'>Detail</a>";
+			}
 
 			$result_array[] = $tmpentry;
 		}

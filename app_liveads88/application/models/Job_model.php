@@ -140,6 +140,9 @@ class Job_Model extends CI_Model
 		$sql = "SELECT
 				customer.cu_name,
 				job.jb_id,
+				job.livestatus,
+				job.ispurchased,
+				job.purchase_itemid,
 				job.customer_id,
 				job.jb_name,
 				job.jb_email,

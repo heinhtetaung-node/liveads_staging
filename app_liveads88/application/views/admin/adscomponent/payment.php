@@ -50,6 +50,7 @@
                         <th>ID</th>
 						<th>Customer Name</th>
 						<th>Payment</th>
+						<th>Invoice Number</th>
                         <th>Date</th>
 						<th>Option</th>
                       </tr>
@@ -61,6 +62,7 @@
 								<td><?php echo $p['payment_id']; ?></td>
 								<td><?php echo $p['cu_name']; ?></td>
 								<td><?php echo $p['payment_amt']; ?></td>
+								<td><?php echo $p['invoice_number']; ?></td>
 								<td><?php echo $p['created_at']; ?></td>
 								<td>
 									<?php //echo $p['approved']; ?>

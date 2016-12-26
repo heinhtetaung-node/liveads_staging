@@ -148,8 +148,28 @@
 					<input type='hidden' name='customer_id' id='customer_id' value="<?php echo $event->customer_id; ?>" />
 					<div class="pull-right">
 						<a href="<?php echo base_url(); ?>event" class="btn btn-primary">Back to List</a>
-						<input class="btn btn-success" type="submit" value="Submit">
+						
+					<?php					
+					if($event->livestatus!=1 && $event->ispurchased!=1){ ?>
+						
+						<input class="btn btn-success" type="submit" value="Submit" id="data_upload"><?php
+						
+					}else if($event->livestatus==1 && $event->ispurchased==1){ ?>
+						
+						<a href="<?php echo base_url(); ?>event/approve/<?php echo $event->ev_id; ?>/<?php echo $event->paid_ads_start_date; ?>/<?php echo $event->purchase_itemid; ?>"><input class="btn btn-success" type="button" id="" value="Approve"></a>
+						<?php	
+						
+					}else if($event->livestatus==2 && $event->ispurchased==1){ ?>
+						
+						<a href="<?php echo base_url(); ?>event/reject/<?php echo $event->ev_id; ?>/<?php echo $event->paid_ads_start_date; ?>"><input class="btn btn-danger" type="button" id="" value="Reject"></a><?php
+					}else if($event->livestatus==0 && $event->ispurchased==1){ ?>
+						
+						<?php
+					} ?>
+					
 					</div>
+					
+					
                   </form>
                 </div>
               </div>

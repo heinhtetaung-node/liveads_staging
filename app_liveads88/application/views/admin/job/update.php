@@ -142,7 +142,23 @@
 					<input type='hidden' name='customer_id' id='customer_id' value="<?php echo $job->customer_id; ?>"/>
 					<div class="pull-right">
 					<a href="<?php echo base_url(); ?>job" class="btn btn-primary">Back to List</a>
-					<input class="btn btn-success" type="submit" value="Submit">
+					<?php					
+					if($job->livestatus!=1 && $job->ispurchased!=1){ ?>
+						
+						<input class="btn btn-success" type="submit" value="Submit" id="data_upload"><?php
+						
+					}else if($job->livestatus==1 && $job->ispurchased==1){ ?>
+						
+						<a href="<?php echo base_url(); ?>job/approve/<?php echo $job->jb_id; ?>/<?php echo $job->paid_ads_start_date; ?>/<?php echo $job->purchase_itemid; ?>"><input class="btn btn-success" type="button" id="" value="Approve"></a>
+						<?php	
+						
+					}else if($job->livestatus==2 && $job->ispurchased==1){ ?>
+						
+						<a href="<?php echo base_url(); ?>job/reject/<?php echo $job->jb_id; ?>/<?php echo $job->paid_ads_start_date; ?>"><input class="btn btn-danger" type="button" id="" value="Reject"></a><?php
+					}else if($job->livestatus==0 && $job->ispurchased==1){ ?>
+						
+						<?php
+					} ?>
 					</div>
                   </form>
                 </div>

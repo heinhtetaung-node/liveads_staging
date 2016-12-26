@@ -1,4 +1,7 @@
 Coding changes
+Advertiser Admin
+app_advertiser folder
+
 Admin
 1. view/admin/sidebar
 2. view/adscomponent folder
@@ -13,6 +16,11 @@ Admin
 9. view/admin/adscomponent/purchaseadsdetail
 10. models/Adscomponent_Model.php
 
+---- Third staging upload ----
+1. Controller/Product.php lineNo91
+2. Controller/Coupon.php
+
+
 Website
 6. views/header.php
 7. views/customer_header.php
@@ -20,6 +28,7 @@ Website
 9. controller/customer.php
 10. model/Customer_model.php
 11. view/advertise/add.php
+12. view/advertise/checkout.php
 
 --- second staging upload ---
 12. assets/css/custom_hh.css
@@ -28,6 +37,11 @@ Website
 15. views/customer_header.php
 16. views/advertise/adsforms folder
 17. model/Adscomponent_Model
+18. controller/ascomponent
+
+----- Website Third staging upload -----
+1. Job_model line 23 LEFT to INNER
+2. Event_model line 18 LEFT to INNER
 
 Database changes
 1. add table adscomponent
@@ -41,7 +55,58 @@ Database changes
 4. ALTER TABLE `product` ADD `ispurchased` TINYINT NOT NULL DEFAULT '0' , ADD `payment_id` INT NULL DEFAULT NULL , ADD `purchase_itemid` INT NULL DEFAULT NULL ;
 5. ALTER TABLE `event` ADD `ispurchased` TINYINT NOT NULL DEFAULT '0' , ADD `payment_id` INT NULL DEFAULT NULL , ADD `purchase_itemid` INT NULL DEFAULT NULL ;
 6. ALTER TABLE `job` ADD `ispurchased` TINYINT NOT NULL DEFAULT '0' , ADD `payment_id` INT NULL DEFAULT NULL , ADD `purchase_itemid` INT NULL DEFAULT NULL ;
- 
+
+---------------Third Staging upload-------------------
+7. ALTER TABLE `coupon` ADD `livestatus` TINYINT NOT NULL DEFAULT '0' COMMENT '0 is pending, 1 is submit for approval, 2 is admin approved' ;
+8. ALTER TABLE `event` ADD `livestatus` TINYINT NOT NULL DEFAULT '0' COMMENT '0 is pending, 1 is submit for approval, 2 is admin approved' ;
+9. ALTER TABLE `job` ADD `livestatus` TINYINT NOT NULL DEFAULT '0' COMMENT '0 is pending, 1 is submit for approval, 2 is admin approved' ;
+10. ALTER TABLE `product` ADD `livestatus` TINYINT NOT NULL DEFAULT '0' COMMENT '0 is pending, 1 is submit for approval, 2 is admin approved' ;
+
 
 
 Data changes
+
+Query for coupon advertiser admin panel
+
+SELECT 
+	c.*,
+	a.adsname,
+	cu.cu_name, 
+	p.created_at, 
+	pr.price, 
+	pr.price_unit, 
+	pr.days
+FROM `coupon` c
+	LEFT JOIN customer cu
+	ON c.customer_id=cu.cu_id
+	INNER JOIN purchaseads_payment p
+	ON c.payment_id=p.payment_id
+	INNER JOIN purchaseads_items pi
+	ON c.purchase_itemid=pi.item_id
+	INNER JOIN adscomponent_price pr
+	ON pi.selectedpriceid=pr.price_id
+	INNER JOIN adscomponent a
+	ON pi.adscomponent_id=a.adscomponent_id
+WHERE 
+	c.ispurchased=1 AND
+	c.customer_id=42 AND
+	a.adsname='Coupons'
+	
+
+QUERY FOR NAVIGATION
+	
+SELECT i.*, a.adsname FROM `purchaseads_items` i
+INNER JOIN adscomponent a ON
+a.adscomponent_id=i.adscomponent_id 
+GROUP BY i.adscomponent_id
+
+
+
+----- important Third staging upload -----
+1. Job_model line 23 LEFT to INNER
+2. Event_model line 18 LEFT to INNER
+
+
+
+----- importand Forth staging upload ----
+add column paypal_payment_id varchar 100, invoice_number varchar 100

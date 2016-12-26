@@ -23,6 +23,46 @@ class Job extends CI_Controller {
 		}
 	}
 	
+	
+	public function approve($jb_id, $valid_from, $purchase_itemid){
+		
+		$ads=array();
+		$sql="
+				SELECT p.price, p.days
+				FROM job c
+				INNER JOIN purchaseads_items pi
+				ON c.purchase_itemid=pi.item_id
+				INNER JOIN adscomponent_price p
+				ON pi.selectedpriceid=p.price_id
+				WHERE c.jb_id=$jb_id
+			";
+		
+		$query = $this->db->query($sql);
+		if($query->num_rows() > 0)
+		{
+			$ads=$query->row();
+		}
+		
+		$date = strtotime(date("Y-m-d", strtotime($valid_from)) . " +{$ads->days} days"); 
+
+		$cp_valid_to=date('Y-m-d', $date);
+		
+		$this->db->query(
+			"UPDATE `job` SET `livestatus` = '2', paid_ads_end_date='$cp_valid_to' WHERE `jb_id` = ".$jb_id
+		);
+		$this->session->set_flashdata('msg', '<div class="alert alert-success text-center">This item is approved by admin.</div>');
+		redirect('job/update/'.$jb_id);
+	}
+	public function reject($jb_id, $valid_from){
+		
+		$this->db->query(
+			"UPDATE `job` SET `livestatus` = '1', paid_ads_end_date = NULL WHERE `jb_id` = ".$jb_id
+		);
+		
+		$this->session->set_flashdata('msg', '<div class="alert alert-success text-center">This item is rejected by admin.</div>');
+		redirect('job/update/'.$jb_id);
+	}
+	
 	 /**
     * Add about job list
     * @Ei
@@ -48,6 +88,8 @@ class Job extends CI_Controller {
 			
 		$sql = "SELECT customer.cu_name,
 				`job`.jb_id,
+				`job`.livestatus,
+				`job`.ispurchased,
 				`job`.customer_id,
 				`job`.jb_name,
 				`job`.jb_description,
@@ -82,8 +124,17 @@ class Job extends CI_Controller {
 			$tmpentry[] = $row['jb_salary'];			
 			$tmpentry[] = $row['jb_location'];
 			$tmpentry[] = $row['jb_description'];
-			$tmpentry[] = "<a href='".base_url()."job/update/".$row['jb_id']."' class='btn btn-info'>Edit</a><a href='".base_url()."job/deleteJob/".$row['jb_id']."' class='btn btn-danger' onclick='return confirm(\"Are you sure?\")'>Delete</a>";			
-
+						
+			if($row['livestatus']==0 && $row['ispurchased']==0){
+			$tmpentry[] = "<a href='".base_url()."job/update/".$row['jb_id']."' class='btn btn-info'>Edit</a><a href='".base_url()."job/deleteJob/".$row['jb_id']."' class='btn btn-danger' onclick='return confirm(\"Are you sure?\")'>Delete</a>";
+			}else if($row['livestatus']==1 && $row['ispurchased']==1){		
+			$tmpentry[] = "<a href='".base_url()."job/update/".$row['jb_id']."' class='btn btn-primary'>Approve</a>";
+			}else if($row['livestatus']==0 && $row['ispurchased']==1){
+			$tmpentry[] = "<a href='".base_url()."job/update/".$row['jb_id']."' class='btn btn-info'>Detail</a>";
+			}else if($row['livestatus']==2 && $row['ispurchased']==1){
+			$tmpentry[] = "<a href='".base_url()."job/update/".$row['jb_id']."' class='btn btn-info'>Detail</a>";
+			}
+			
 			$result_array[] = $tmpentry;
 		}
 		

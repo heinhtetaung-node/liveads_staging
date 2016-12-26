@@ -336,9 +336,26 @@
 					 <?php echo form_error('tmpuniquepath');?> 
 					</div>
 					<!---- end file upload --->
-					 <div class="pull-right">
+					<div class="pull-right">
 					<a href="<?php echo base_url(); ?>product" class="btn btn-primary">Back to List</a>
-					<button class="btn btn-success" id="data_upload" >Submit</button>
+					<?php					
+					if($product->livestatus!=1 && $product->ispurchased!=1){ ?>
+						
+						<input class="btn btn-success" type="submit" value="Submit" id="data_upload"><?php
+						
+					}else if($product->livestatus==1 && $product->ispurchased==1){ ?>
+						
+						<a href="<?php echo base_url(); ?>product/approve/<?php echo $product->pro_id; ?>/<?php echo $product->paid_ads_start_date; ?>/<?php echo $product->purchase_itemid; ?>"><input class="btn btn-success" type="button" id="" value="Approve"></a>
+						<?php	
+						
+					}else if($product->livestatus==2 && $product->ispurchased==1){ ?>
+						
+						<a href="<?php echo base_url(); ?>product/reject/<?php echo $product->pro_id; ?>/<?php echo $product->paid_ads_start_date; ?>"><input class="btn btn-danger" type="button" id="" value="Reject"></a><?php
+					}else if($product->livestatus==0 && $product->ispurchased==1){ ?>
+						
+						<?php
+					} ?>
+					
 					</div>
 						</section>
 

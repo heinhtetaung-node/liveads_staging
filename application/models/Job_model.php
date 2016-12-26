@@ -20,7 +20,7 @@ class Job_Model extends CI_Model
 				job
 				LEFT JOIN customer ON job.customer_id = customer.cu_id
 				
-				LEFT JOIN (
+				INNER JOIN (
 					SELECT job_sub.jb_id from `job` as job_sub where job_sub.paid_ads_start_date <= DATE_FORMAT(now(),'%Y-%m-%d') AND job_sub.paid_ads_end_date >= DATE_FORMAT(now(),'%Y-%m-%d')
 				) as job_sub 
 				ON job_sub.jb_id = job.jb_id

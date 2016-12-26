@@ -27,6 +27,7 @@ class Advertise extends CI_Controller {
 		$this->load->model('Customer_model');
 		$this->load->model('Adscomponent_Model');
 		$this->load->library(array('form_validation','session','pagination'));
+		$this->load->library('paypal/PaypalPayment');
         $this->load->helper(array('url','html','form'));
 	}
 	
@@ -535,68 +536,115 @@ class Advertise extends CI_Controller {
         redirect('/advertise');
 	}
 	
+	function cancelpayment(){
+		echo "Your payment is cancelled.";
+	}
+	
+	function paymenterror(){
+		echo "Something error in payment process. Please try again.";
+	}
+	
+	function acceptpayment(){
+		
+		if(isset($_GET['approved'])){
+			$approved = $_GET['approved'] === true;
+			//echo $approved;
+			
+			if($_GET['approved']){
+				$payerId = $_GET['PayerID'];
+				$paymentId = $_GET['paymentId'];
+				
+				$this->paypalpayment->chargeuser($paymentId, $payerId);
+				
+				$customer_id=$this->session->userdata('cu_id');
+				$total=$this->session->userdata('total');
+				$carts=$this->session->userdata('cart');
+				$payment_id=$_SESSION['payment_id'];
+				$invoice_number=$_SESSION['invoice_number'];
+				
+				unset($_SESSION['payment_id']);
+				unset($_SESSION['invoice_number']);
+				//insert into purchaseads_payment
+				//SELECT `payment_id`, `payment_amt`, `customer_id`, `created_at`, `updated_at`, `approved` FROM `purchaseads_payment` WHERE 1			
+				$purchaseads_payment = array(
+						'payment_amt' => $total,
+						'customer_id' => $customer_id,
+						'paypal_payment_id' => $payment_id,
+						'invoice_number' => $invoice_number
+					);
+				$this->db->insert('purchaseads_payment', $purchaseads_payment);
+				$payment_id=$this->db->insert_id();
+				
+				foreach($carts as $c){
+					$purchaseads_items = array(
+							'payment_id' => $payment_id,
+							'adscomponent_id' => $c['id'],
+							'selectedpriceid' => $c['selectedpriceid'],
+							'qty' => $c['qty'],
+							'customer_id' => $customer_id
+						);
+					$this->db->insert('purchaseads_items', $purchaseads_items);
+					$item_id=$this->db->insert_id();
+					
+					foreach($c['data'] as $d){
+						$adsname=$c['ads']->adsname;
+						$d['payment_id'] = $payment_id;
+						$d['purchase_itemid'] = $item_id;
+						if($adsname=="Coupons"){
+							//insert into coupon
+							$this->db->insert('coupon', $d);
+						}
+						if($adsname=="Promotions"){
+							//insert into product
+							$this->db->insert('product', $d);
+						}
+						if($adsname=="Events"){
+							//insert into event
+							$this->db->insert('event', $d);
+						}
+						if($adsname=="Jobs"){
+							//insert into job
+							$this->db->insert('job', $d);
+						}
+					}
+				}
+				
+				$this->session->set_flashdata('paymentmsg', '<div class="alert alert-success text-center">Your payment is successed.
+				<br>Go to your admin panel to control your purchase ads.<br>
+				<a href="'.base_url().'app_advertiser/Admin" target="_blank">'.base_url().'app_advertiser/Admin</a></div>');
+				
+				$this->session->set_flashdata('success', true);
+				
+				$data=array();
+				$this->load->view('customer_header');				
+				$this->load->view('advertise/checkout',$data);
+				$this->load->view('footer');
+				
+			}else{
+				header('Location: '.base_url()."advertise/cancelpayment");
+			}
+		}
+	}
+	
 	function paywithpaypal(){
 		if ($this->session->userdata('cart')!="") {
-			// echo "<pre>";
-			// var_dump($this->session->userdata('cart'));
-			// echo "</pre>";
-			// exit;
 			
 			$customer_id=$this->session->userdata('cu_id');
 			$total=$this->session->userdata('total');
 			$carts=$this->session->userdata('cart');
 			
-			//insert into purchaseads_payment
-			//SELECT `payment_id`, `payment_amt`, `customer_id`, `created_at`, `updated_at`, `approved` FROM `purchaseads_payment` WHERE 1			
-			$purchaseads_payment = array(
-					'payment_amt' => $total,
-					'customer_id' => $customer_id
-				);
-			$this->db->insert('purchaseads_payment', $purchaseads_payment);
-			$payment_id=$this->db->insert_id();
+			$shipping=0.00;
+			$subtotal=$total;
+			$tax=0.00;
+			$currency="USD";
+			$description="Advertising Payment";
+			$intent="sale";
+			$returnurl=base_url()."advertise/acceptpayment?approved=true";
+			$cancelurl=base_url()."advertise/cancelpayment?approved=false";
+			$errorurl=base_url()."advertise/paymenterror";
 			
-			foreach($carts as $c){
-				$purchaseads_items = array(
-						'payment_id' => $payment_id,
-						'adscomponent_id' => $c['id'],
-						'selectedpriceid' => $c['selectedpriceid'],
-						'qty' => $c['qty'],
-						'customer_id' => $customer_id
-					);
-				$this->db->insert('purchaseads_items', $purchaseads_items);
-				$item_id=$this->db->insert_id();
-				
-				foreach($c['data'] as $d){
-					$adsname=$c['ads']->adsname;
-					$d['payment_id'] = $payment_id;
-					$d['purchase_itemid'] = $item_id;
-					if($adsname=="Coupons"){
-						//insert into coupon
-						$this->db->insert('coupon', $d);
-					}
-					if($adsname=="Promotions"){
-						//insert into product
-						$this->db->insert('product', $d);
-					}
-					if($adsname=="Events"){
-						//insert into event
-						$this->db->insert('event', $d);
-					}
-					if($adsname=="Jobs"){
-						//insert into job
-						$this->db->insert('job', $d);
-					}
-				}
-			}
-			
-			$this->session->set_flashdata('paymentmsg', '<div class="alert alert-success text-center">Your payment is successed.</div>');
-			
-			$this->session->set_flashdata('success', true);
-			
-			$data=array();
-			$this->load->view('customer_header');				
-			$this->load->view('advertise/checkout',$data);
-			$this->load->view('footer');
+			$this->paypalpayment->makepayment($shipping, $subtotal, $tax, $currency, $description, $intent, $returnurl, $cancelurl, $errorurl);
+			exit;
 			
 		}else{
 			redirect('/advertise');

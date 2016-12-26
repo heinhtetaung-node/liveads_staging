@@ -229,7 +229,24 @@
 					<input type='hidden' name='customer_id' id='customer_id' value="<?php echo ($coupon!== false ? $coupon->customer_id : set_value('customer_id')); ?>" />
 					<div class="pull-right">
 					<a href="<?php echo base_url(); ?>coupon" class="btn btn-primary">Back to List</a>
-					<input class="btn btn-success" type="submit" value="Submit" id="data_upload">
+					<?php					
+					if($coupon->livestatus!=1 && $coupon->ispurchased!=1){ ?>
+						
+						<input class="btn btn-success" type="submit" value="Submit" id="data_upload"><?php
+						
+					}else if($coupon->livestatus==1 && $coupon->ispurchased==1){ ?>
+						
+						<a href="<?php echo base_url(); ?>coupon/approve/<?php echo $coupon->cp_id; ?>/<?php echo $coupon->cp_valid_from; ?>/<?php echo $coupon->purchase_itemid; ?>"><input class="btn btn-success" type="button" id="" value="Approve"></a>
+						<?php	
+						
+					}else if($coupon->livestatus==2 && $coupon->ispurchased==1){ ?>
+						
+						<a href="<?php echo base_url(); ?>coupon/reject/<?php echo $coupon->cp_id; ?>/<?php echo $coupon->cp_valid_from; ?>"><input class="btn btn-danger" type="button" id="" value="Reject"></a><?php
+					}else if($coupon->livestatus==0 && $coupon->ispurchased==1){ ?>
+						
+						<?php
+					} ?>
+					
 					</div>
                   </form>
                 </div>
@@ -338,7 +355,7 @@
 	});
 
 	$('.image-editor').cropit(
-	{ 
+		{ 
 		//imageState: { src: ''},
 		width:640,
 		height:400,

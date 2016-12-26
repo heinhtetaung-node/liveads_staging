@@ -1,0 +1,46 @@
+[30-Jul-2016 05:46:00 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 14155025 bytes) in Unknown on line 0
+[30-Jul-2016 05:52:43 UTC] PHP Warning:  Unknown: POST Content-Length of 29485295 bytes exceeds the limit of 20971520 bytes in Unknown on line 0
+[30-Jul-2016 05:52:45 UTC] PHP Warning:  Unknown: POST Content-Length of 29485295 bytes exceeds the limit of 20971520 bytes in Unknown on line 0
+[05-Aug-2016 11:19:34 UTC] PHP Parse error:  syntax error, unexpected '++' (T_INC), expecting ')' in /home/liveads88/public_html/app_liveads88/application/controllers/Pushnotification.php on line 285
+[22-Aug-2016 13:32:19 Asia/Singapore] PHP Fatal error:  Call to undefined method Feedback::_validateInquiryrequest() in /home/liveads88/public_html/app_liveads88/application/controllers/api/Feedback.php on line 34
+[30-Aug-2016 20:55:40 Asia/Singapore] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/liveads88/public_html/app_liveads88/application/controllers/api/Users.php on line 461
+[22-Sep-2016 14:36:01 Asia/Singapore] PHP Parse error:  syntax error, unexpected '" ORDER BY cu_created DESC "' (T_CONSTANT_ENCAPSED_STRING) in /home/liveads88/public_html/app_liveads88/application/models/Product_model.php on line 383
+[22-Sep-2016 14:36:02 Asia/Singapore] PHP Parse error:  syntax error, unexpected '" ORDER BY cu_created DESC "' (T_CONSTANT_ENCAPSED_STRING) in /home/liveads88/public_html/app_liveads88/application/models/Product_model.php on line 383
+[22-Sep-2016 15:07:24 Asia/Singapore] PHP Parse error:  syntax error, unexpected '" ORDER BY cu_created DESC "' (T_CONSTANT_ENCAPSED_STRING) in /home/liveads88/public_html/app_liveads88/application/models/Product_model.php on line 383
+[22-Sep-2016 15:07:24 Asia/Singapore] PHP Parse error:  syntax error, unexpected '" ORDER BY cu_created DESC "' (T_CONSTANT_ENCAPSED_STRING) in /home/liveads88/public_html/app_liveads88/application/models/Product_model.php on line 383
+[22-Sep-2016 15:07:39 Asia/Singapore] PHP Parse error:  syntax error, unexpected '" ORDER BY cu_created DESC "' (T_CONSTANT_ENCAPSED_STRING) in /home/liveads88/public_html/app_liveads88/application/models/Product_model.php on line 383
+[22-Sep-2016 15:07:40 Asia/Singapore] PHP Parse error:  syntax error, unexpected '" ORDER BY cu_created DESC "' (T_CONSTANT_ENCAPSED_STRING) in /home/liveads88/public_html/app_liveads88/application/models/Product_model.php on line 383
+[22-Sep-2016 15:07:58 Asia/Singapore] PHP Parse error:  syntax error, unexpected '" ORDER BY cu_created DESC "' (T_CONSTANT_ENCAPSED_STRING) in /home/liveads88/public_html/app_liveads88/application/models/Product_model.php on line 383
+[22-Sep-2016 15:07:58 Asia/Singapore] PHP Parse error:  syntax error, unexpected '" ORDER BY cu_created DESC "' (T_CONSTANT_ENCAPSED_STRING) in /home/liveads88/public_html/app_liveads88/application/models/Product_model.php on line 383
+[22-Sep-2016 15:08:11 Asia/Singapore] PHP Parse error:  syntax error, unexpected '" ORDER BY cu_created DESC "' (T_CONSTANT_ENCAPSED_STRING) in /home/liveads88/public_html/app_liveads88/application/models/Product_model.php on line 383
+[22-Sep-2016 15:08:12 Asia/Singapore] PHP Parse error:  syntax error, unexpected '" ORDER BY cu_created DESC "' (T_CONSTANT_ENCAPSED_STRING) in /home/liveads88/public_html/app_liveads88/application/models/Product_model.php on line 383
+[23-Sep-2016 16:53:26 Asia/Singapore] PHP Parse error:  syntax error, unexpected ''</' (T_ENCAPSED_AND_WHITESPACE) in /home/liveads88/public_html/app_liveads88/application/controllers/Pushnotification.php on line 99
+[21-Oct-2016 16:54:08 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 16:54:13 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 16:56:25 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:12:00 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:12:02 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:12:04 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:12:05 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:12:06 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:12:07 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:12:07 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:12:09 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:12:20 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:12:26 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:14:45 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:14:49 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:15:02 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:15:03 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:15:35 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:15:37 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:15:46 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:16:00 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:16:02 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:16:13 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:16:16 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:18:28 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:18:52 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:19:02 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:22:44 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25
+[21-Oct-2016 17:23:23 Asia/Singapore] PHP Fatal error:  Call to undefined function redirect() in /home/liveads88/public_html/app_liveads88/application/controllers/Customer.php on line 25

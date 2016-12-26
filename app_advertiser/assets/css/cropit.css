@@ -1,0 +1,58 @@
+.cropit-preview {
+background-color: #f8f8f8;
+background-size: cover;
+border: 1px solid #ccc;
+border-radius: 3px;
+margin-top: 7px;
+}
+
+.cropit-preview-image-container {
+cursor: move;
+}
+
+.image-size-label {
+margin-top: 10px;
+}
+
+
+#result {
+margin-top: 10px;
+width: 100%;
+border:1px solid;
+}
+
+#result-data {
+display: block;
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+word-wrap: break-word;
+}
+
+input.cropit-image-input {
+visibility: hidden;
+display:none;
+}
+
+/* Translucent background image */
+.cropit-preview-background {
+opacity: .2;
+}
+
+input.cropit-image-zoom-input {
+position: relative;
+}
+
+#image-cropper {
+overflow: hidden;
+}
+
+#resized-image-wrapper img{
+border:1px solid #eee;
+}
+
+#resized-image-wrapper div{
+text-transform: capitalize;
+padding:10px;
+text-align: center;
+}

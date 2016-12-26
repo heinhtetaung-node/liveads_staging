@@ -1,0 +1,4 @@
+app_liveads88/application/logs/
+*.zip
+*.sql
+app_advertiser/application/logs/

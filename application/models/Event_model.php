@@ -15,7 +15,7 @@ class Event_Model extends CI_Model
 				event_sub.ev_id as sort_ev_id
 				FROM
 								`event`
-				LEFT JOIN (
+				INNER JOIN (
 					SELECT event_sub.ev_id from `event` as event_sub where event_sub.paid_ads_start_date <= DATE_FORMAT(now(),'%Y-%m-%d') AND event_sub.paid_ads_end_date >= DATE_FORMAT(now(),'%Y-%m-%d')
 				) as event_sub 
 				ON event_sub.ev_id = `event`.ev_id
